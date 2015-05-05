@@ -226,4 +226,51 @@ $(function() {
 		$("body").removeClass("cart-expanded");
 	});
 
+	$("#edit-profile").click(function(){
+		$(".data-profile span").hide();
+		$(".data-profile input[type=text]").show();
+		$(".data-profile textarea").show();
+		$("#save-profile").show();
+	});
+
+	$("#save-profile").click(function(){
+		$(".data-profile input[type=text]").hide();
+		$(".data-profile textarea").hide();
+
+		var email = $(".data-profile input[name=email]").val();
+		var store_name = $(".data-profile input[name=store_name]").val();
+		var store_wa = $(".data-profile input[name=store_wa]").val();
+		var store_sms = $(".data-profile input[name=store_sms]").val();
+		var store_bbm = $(".data-profile input[name=store_bbm]").val();
+		var store_fb = $(".data-profile input[name=store_fb]").val();
+		var store_twitter = $(".data-profile input[name=store_twitter]").val();
+		var store_instagram = $(".data-profile input[name=store_instagram]").val();
+		var store_url = $(".data-profile input[name=store_url]").val();
+		var store_url_label = $(".data-profile input[name=store_url_label]").val();
+		var margin_percen = $(".data-profile input[name=margin_percen]").val();
+		var margin_fixed = $(".data-profile input[name=margin_fixed]").val();
+		var cara_pesan = $(".data-profile textarea[name=cara_pesan]").val();
+		var store_address = $(".data-profile textarea[name=store_address]").val();
+
+		$.post("http://apps.debusana.com/api/updateagen",{email:email,store_name:store_name,store_wa:store_wa,store_sms:store_sms,store_bbm:store_bbm,store_fb:store_fb,store_twitter:store_twitter,
+			store_instagram:store_instagram,store_url:store_url,store_url_label:store_url_label,margin_percen:margin_percen,margin_fixed,cara_pesan:cara_pesan,store_address:store_address},function(data){
+				$(".data-profile span#store_name").text(store_name);
+				$(".data-profile span#store_wa").text(store_wa);
+				$(".data-profile span#store_sms").text(store_sms);
+				$(".data-profile span#store_bbm").text(store_bbm);
+				$(".data-profile span#store_fb").text(store_fb);
+				$(".data-profile span#store_twitter").text(store_twitter);
+				$(".data-profile span#store_instagram").text(store_instagram);
+				$(".data-profile span#store_url").text(store_url);
+				$(".data-profile span#store_url_label").text(store_url_label);
+				$(".data-profile span#margin_percen").text(margin_percen);
+				$(".data-profile span#margin_fixed").text(margin_fixed);
+				$(".data-profile span#cara_pesan").text(cara_pesan);
+				$(".data-profile span#store_address").text(store_address);
+				$(".data-profile span").show();
+			},"json");
+				
+		$("#save-profile").hide();
+	});
+
 });
