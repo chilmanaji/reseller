@@ -268,6 +268,7 @@ $(function() {
 				$(".data-profile span#cara_pesan").text(cara_pesan);
 				$(".data-profile span#store_address").text(store_address);
 				$(".data-profile span").show();
+				location.reload();
 			},"json");
 				
 		$("#save-profile").hide();
